@@ -1,0 +1,22 @@
+version: "3"
+services:
+  ################################################################################
+  # PostgreSQL container
+  # usage: https://hub.docker.com/_/postgres
+  # client: please install pgadmin https://www.pgadmin.org/download/pgadmin-4-windows/
+  #         and connect via docker ip and port 5430
+  #     example: 10.0.75.1:5430
+  #     user: postgres
+  #     password: postgres
+  #################################################################################
+  postgres:
+    image: maven2.it.volvo.net:18443/postgres:9.6.13
+    restart: always
+    ports:
+     - "5430:5432"
+    environment:
+      - POSTGRESS_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=test-db
+    # needed for transactions support
+    command: -c max_prepared_transactions=6
