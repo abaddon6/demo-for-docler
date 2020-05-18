@@ -1,0 +1,24 @@
+spring:
+  profiles:
+    active:
+    - junit
+
+---
+spring:
+  profiles: junit
+  
+  liquibase:
+    contexts: junit
+    
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none  
+    open-in-view: true
+      
+  jackson:
+    mapper:
+      default-view-inclusion: true
+    serialization:      
+      indent-output: true
+      
